@@ -1,6 +1,6 @@
 <?php
 namespace Practica\Personajes\Jugadores;
-use Practica\Personas\Jugadores\Jugador;
+use Practica\Personajes\Jugadores\Jugador;
 use Practica\Log;
 
 class Arquero extends Jugador{

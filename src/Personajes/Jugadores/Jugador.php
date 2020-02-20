@@ -1,13 +1,14 @@
 <?php
-namespace Practica\Personas\Jugadores;
-use Practica\Personas\Persona;
+namespace Practica\Personajes\Jugadores;
+use Practica\Personajes\Personaje;
 
-abstract class Jugador extends Persona{
+abstract class Jugador extends Personaje{
 	protected $numero;
 	protected $posicion;
 
 	public function __construct($nombre, $apellido, $nacionalidad){
 		parent::__construct($nombre, $apellido, $nacionalidad);
+		$this->posicion = array();
 	}
 
 	public function getNumero(){

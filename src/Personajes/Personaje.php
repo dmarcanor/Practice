@@ -61,4 +61,3 @@ abstract class Persona{
 		return $this;
 	}
 }
-}
