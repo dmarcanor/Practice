@@ -2,12 +2,12 @@
 namespace Practica\Personajes\Jugadores;
 use Practica\Personajes\Personaje;
 
-abstract class Jugador extends Personaje{
+class Jugador extends Personaje{
 	protected $numero;
 	protected $posicion;
 
-	public function __construct($nombre, $apellido, $nacionalidad){
-		parent::__construct($nombre, $apellido, $nacionalidad);
+	public function __construct($nombre, $apellido, $fechaNacimiento ,$nacionalidad, $altura, $peso){
+		parent::__construct($nombre, $apellido, $fechaNacimiento ,$nacionalidad, $altura, $peso);
 		$this->posicion = array();
 	}
 
@@ -25,7 +25,7 @@ abstract class Jugador extends Personaje{
 	}
 
 	public function setPosicion(Posicion $posicion){
-		$this->posicion = $posicion;
+		$this->posicion[] = $posicion;
 		return $this;
 	}
 
@@ -48,8 +48,5 @@ abstract class Jugador extends Personaje{
 		if(strtoupper($this->getPosicion()) == "MEDIOCAMPO") return true;
 		else return false;
 	}
-	//End Getters y Setters
-
-	abstract public function atacar($defensa);
-	abstract public function defender($atacante);
+	//Fin de getters y setter
 }
