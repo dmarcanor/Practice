@@ -7,7 +7,7 @@ class EquipoFutbol{
 	private $jugadores;
 	private $estadio;
 	
-	public function __construct($nombre, Estadio $estadio){
+	public function __construct($nombre, $estadio){
 		$this->nombre = $nombre;
 		$this->estadio = $estadio;
 		$this->jugadores = array();
@@ -49,5 +49,5 @@ class EquipoFutbol{
 		$this->estadio = $estadio;
 		return $this;
 	}
-	//End Getters y Setters
+	//Fin de getters y setter
 }

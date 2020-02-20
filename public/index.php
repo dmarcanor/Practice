@@ -1,13 +1,18 @@
 <?php
 	namespace Practica;
 	use  Practica\Personajes\Jugadores\Jugador;
+	use  Practica\Personajes\Tecnicos\DirectorTecnico;
 	require "../vendor/autoload.php";
 
-	$jugador = array(
-		new Jugador("Daniel", "Marcano", "13/12/1998" ,"Venezuela", 1.72, 52), 
-		new Jugador("Pedro", "Fernandez", "13/12/1999" ,"Colombia", 1.78, 60),
-		new Jugador("Edinson", "Cavani", "20/03/1992" ,"Uruguay", 1.77, 70)
+	$directorTecnico = new DirectorTecnico("Pep", "Guardiola", "12/11/1980", "España" ,1.72, 70);
+	$jugadores = array(
+		Jugador::createJugador("James", "Rodriguez", "14/12/1992", "Colombia", 1.71, 76)
+		->setNumero(10)
+		->setPosicion("Mediocampista")
+		->setEstadisticas(20, 82, 79, 72, 87)
 		);
+
+	//$equipo = new EquipoFutbol();
 ?>
 
 <!DOCTYPE html>

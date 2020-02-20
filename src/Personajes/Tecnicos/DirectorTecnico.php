@@ -1,30 +1,30 @@
 <?php
 namespace Practica\Personajes\Tecnicos;
-use Practica\Personas\Persona;
+use Practica\Personajes\Personaje;
 
-class DirectorTecnico extends Persona{
-	private $reputacion;
-	private $nivelTecnico;
+class DirectorTecnico extends Personaje{
+	const MAX_ESTADISTICAS = 100;
+	private $estadisticas;
 
-	public function __construc($nombre, $apellido, $nacionalidad){
-		parent::__construc($nombre, $apellido, $nacionalidad);
-		$this->reputacion = 0;
-		$this->nivel_tecnico = 0;
+	public function __construc($nombre, $apellido, $fechaNacimiento ,$nacionalidad, $altura, $peso){
+		parent::__construc($nombre, $apellido, $fechaNacimiento ,$nacionalidad, $altura, $peso);
+		$this->estadisticas = array(
+			"tactica" => 0,
+			"motivacion" => 0,
+			"juvenil" => 0
+		);
 	}
 
-	public function getReputacion(){
-		return $this->reputacion;
+	public function getEstadisticas(){
+		return $this->estadisticas;
 	}
 
-	public function setReputacion($reputacion){
-		$this->reputacion = $reputacion;
-	}
-
-	public function getNivelTecnico(){
-		return $this->nivelTecnico;
-	}
-
-	public function setNivelTecnico($nivelTecnico){
-		$this->nivelTecnico = $nivelTecnico;
+	public function setEstadisticas($estadisticas){
+		foreach($this->estadisticas as $estadistica){
+			if($estadistica > MAX_ESTADISTICAS){
+				$estadistica = MAX_ESTADISTICAS;
+			}
+		}
+		return $this;
 	}
 }

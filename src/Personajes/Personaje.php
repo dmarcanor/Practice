@@ -97,6 +97,7 @@ abstract class Personaje{
 
 	public function getEdad(){
 		$anio = getdate()['year'] - $this->explodeFechaNacimiento()[2];
+		
 		switch($this->compararMes()){
 			case "mayor":
 				return  $anio - 1;
