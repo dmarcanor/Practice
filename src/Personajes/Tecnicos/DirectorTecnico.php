@@ -20,12 +20,16 @@ class DirectorTecnico extends Personaje{
 	}
 
 	public function setEstadisticas($tactica, $motivacion, $juvenil){
-		$this->estadisticas['tactica'] = $tactica;
-		$this->estadisticas['motivacion'] = $motivacion;
-		$this->estadisticas['juvenil'] = $juvenil;
+		$this->estadisticas['tactica'] = $this->verificarEstadistica($tactica);
+		$this->estadisticas['motivacion'] = $this->verificarEstadistica($motivacion);
+		$this->estadisticas['juvenil'] = $this->verificarEstadistica($juvenil);
 		return $this;
 	}
 	//Fin de getters y setter
-	
+	public function verificarEstadistica($estadistica){
+		if($estadistica > 100) $estadistica = MAX_ESTADISTICAS;
+		return $estadistica;
+	}
+
 
 }
