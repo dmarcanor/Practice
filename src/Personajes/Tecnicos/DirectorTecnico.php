@@ -25,5 +25,7 @@ class DirectorTecnico extends Personaje{
 		$this->estadisticas['juvenil'] = $juvenil;
 		return $this;
 	}
+	//Fin de getters y setter
+	
 
 }

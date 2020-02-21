@@ -1,6 +1,7 @@
 <?php
 namespace Practica\Personajes\Jugadores;
 use Practica\Personajes\Personaje;
+use Practica\Log\Log;
 
 class Jugador extends Personaje{
 	const MAX_ESTADISTICAS = 100;
@@ -77,19 +78,27 @@ class Jugador extends Personaje{
 			LOG::info("{$this->getNombre()} atajo!!");
 			return true;
 		}else{
-			LOG::info("{$oponente->getNombre()} anota");
+			LOG::info("{$oponente->getNombre()} anota!!");
 			return false;
 		}
 	}
 
 	public function patear($oponente){
 		LOG::info("{$this->getNombre()} patea y...");
-		return $oponente->atajar($this->);
+		if(! $oponente->atajar($this)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public function regatear($oponente){
 		LOG::info("{$this->getNombre()} regatea a {$oponente->getNombre()}");
-		return $oponente->defender($this);
+		if(! $oponente->defender($this)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public function defender($oponente){
