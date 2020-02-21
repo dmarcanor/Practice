@@ -19,12 +19,11 @@ class DirectorTecnico extends Personaje{
 		return $this->estadisticas;
 	}
 
-	public function setEstadisticas($estadisticas){
-		foreach($this->estadisticas as $estadistica){
-			if($estadistica > MAX_ESTADISTICAS){
-				$estadistica = MAX_ESTADISTICAS;
-			}
-		}
+	public function setEstadisticas($tactica, $motivacion, $juvenil){
+		$this->estadisticas['tactica'] = $tactica;
+		$this->estadisticas['motivacion'] = $motivacion;
+		$this->estadisticas['juvenil'] = $juvenil;
 		return $this;
 	}
+
 }

@@ -5,11 +5,12 @@ use Practica\Personajes\Personaje;
 class Jugador extends Personaje{
 	const MAX_ESTADISTICAS = 100;
 	private $numero;
-	private $posicion;
+	private $posiciones;
 	private $estadisticas;
 
 	public function __construct($nombre, $apellido, $fechaNacimiento ,$nacionalidad, $altura, $peso){
 		parent::__construct($nombre, $apellido, $fechaNacimiento ,$nacionalidad, $altura, $peso);
+		$this->numero = 0;
 		$this->posicion = array();
 		$this->estadisticas = array(
 			"reflejos" => 0,
@@ -33,12 +34,12 @@ class Jugador extends Personaje{
 		return $this;
 	}
 
-	public function getPosicion(){
-		return $this->posicion;
+	public function getPosiciones(){
+		return $this->posiciones;
 	}
 
-	public function setPosicion($posicion){
-		$this->posicion[] = $posicion;
+	public function setPosiciones($posiciones){
+		$this->posiciones[] = $posiciones;
 		return $this;
 	}
 
@@ -46,12 +47,12 @@ class Jugador extends Personaje{
 		return $this->estadisticas;
 	}
 
-	public function setEstadisticas($estadisticas){
-		foreach($this->estadisticas as $estadistica){
-			if($estadistica > MAX_ESTADISTICAS){
-				$estadistica = MAX_ESTADISTICAS;
-			}
-		}
+	public function setEstadisticas($reflejos, $regate, $remate, $defensa, $pase){
+		$this->estadisticas['reflejos'] = $this->verificarEstadistica($reflejos);
+		$this->estadisticas['regate'] = $this->verificarEstadistica($regate);
+		$this->estadisticas['remate'] = $this->verificarEstadistica($remate);
+		$this->estadisticas['defensa'] = $this->verificarEstadistica($defensa);
+		$this->estadisticas['pase'] = $this->verificarEstadistica($pase);
 		return $this;
 	}
 	//Fin de getters y setter
@@ -59,6 +60,11 @@ class Jugador extends Personaje{
 	public function hasLuck(){
 		if(rand(0,1)) return true;
 		else return false;
+	}
+
+	public function verificarEstadistica($estadistica){
+		if($estadistica > 100) $estadistica = MAX_ESTADISTICAS;
+		return $estadistica;
 	}
 
 	public function pasar($receptor){
@@ -69,25 +75,31 @@ class Jugador extends Personaje{
 		if($this->getEstadisticas()['reflejos'] >= 
 			$oponente->getEstadisticas()['remate'] && $this->hasLuck()){
 			LOG::info("{$this->getNombre()} atajo!!");
+			return true;
 		}else{
 			LOG::info("{$oponente->getNombre()} anota");
+			return false;
 		}
 	}
 
-	public function patear(){
+	public function patear($oponente){
 		LOG::info("{$this->getNombre()} patea y...");
+		return $oponente->atajar($this->);
 	}
 
 	public function regatear($oponente){
 		LOG::info("{$this->getNombre()} regatea a {$oponente->getNombre()}");
+		return $oponente->defender($this);
 	}
 
 	public function defender($oponente){
 		if($this->getEstadisticas()['defensa'] >= 
 			$oponente->getEstadisticas()['regate'] && $this->hasLuck()){
 			LOG::info("{$this->getNombre()} roba a {$oponente->getNombre()}");
+			return true;
 		}else{
 			LOG::info("{$oponente->getNombre()} pasa a {$this->getNombre()}");
+			return false;
 		}
 	}
 }
