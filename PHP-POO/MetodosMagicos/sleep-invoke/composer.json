@@ -1,0 +1,18 @@
+{
+    "name": "daniel/sleep-invoke",
+    "description": "Example of __sleep and __invoke methods",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Marcano",
+            "email": "dmarcanor2@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Magic\\": "src/"
+        }
+    }
+}
