@@ -4,22 +4,24 @@ namespace Magic;
 
 require "../vendor/autoload.php";
 
-$person = new Person();
+$car = new Car("Chevrolet", "Corsa", 2006, 0);
 
-//MALA PRACTICA, se deben determinar los attributos de la clase explicitamente
-$person->setAttribute("name", "Daniel");
-$person->lastName = "Marcano";	//$person->setAttribute("lastName", "Marcano")
-$person->edad = 21;
+$car->doors = 4;
+$car->wheels = 4;
 
-echo "Nombre: {$person->name} <br>";	//Imprime lastName por el metodo __get()
-echo "Apellido: {$person->lastName} <br>";
+?>
 
-if(isset($person->edad)){
-	echo "Edad: " . $person->edad;
-}
+<pre>
+	
+	<?php var_dump($car); ?>
 
-unset($person->edad);
+</pre>
 
-if(isset($person->edad)){
-	echo "Edad: " . $person->edad;
-}
+<?php
+	if(isset($car->doors)){
+		echo "<p>Doors: {$car->doors}</p>";
+		unset($car->doors);
+	}
+
+	if(isset($car->doors)) echo "<p>Doors: {$car->doors}</p>";
+?>
