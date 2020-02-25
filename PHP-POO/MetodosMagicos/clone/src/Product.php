@@ -21,12 +21,19 @@ class Product{
 	}
 	
 	public function isEmpty($array){
-		if(empty($array)) return true;
-		
-		return false;
+		if(count($array) > 0) return false;
+		else return true;
 	}
 
 	public function __get($index){
 		return $this->list[$index];
+	}
+
+	public function __clone(){
+		$this->list = NULL;
+	}
+
+	public function isSmartphone($obj){
+		return gettype($obj) == "smartphone" ? true : false;
 	}
 }
