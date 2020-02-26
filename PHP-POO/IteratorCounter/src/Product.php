@@ -3,18 +3,18 @@
 namespace IteratorCounter;
 
 class Product{
-	private $list;
+	private $attribute;
 
 	public function __construct($name){
-		$this->list = array("name" => $name);
+		$this->attribute = array("name" => $name);
 	}
 
 	public function getList(){
-		return $this->list;
+		return $this->attribute;
 	}
 
 	public function getName(){
-		return $this->list['name'];
+		return $this->attribute['name'];
 	}
 	//End of getters and setters
 	
@@ -25,9 +25,9 @@ class Product{
 	}
 
 
-	public function listString(){
+	public function attributeString(){
 		$string="";
-		foreach ($this->list as $key => $value){
+		foreach ($this->attribute as $key => $value){
 			$string = $string . "{$key} => {$value} - ";
 		}
 		return $string;
@@ -41,16 +41,16 @@ class Product{
 	public function __call($method, $args=[]){
 		if($this->isEmpty($args))	throw new \Exception("This function must have at least 1 argument");
 
-		$this->list[$method] = $args[0];
+		$this->attribute[$method] = $args[0];
 		return $this;
 	}
 
 	public function __get($index){
-		return $this->list[$index];
+		return $this->attribute[$index];
 	}
 
 	public function __toString(){
-		return $this->listString();
+		return $this->attributeString();
 	}
 	
 }
