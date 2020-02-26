@@ -24,7 +24,7 @@ class Store implements \IteratorAggregate, \Countable{
 	}
 
 	public function getIterator(){
-		return new \ArrayIterator($this->products);
+		return new \ArrayIterator($this->products->getList());
 	}
 
 	public function count(){
