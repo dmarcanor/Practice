@@ -1,0 +1,18 @@
+{
+    "name": "daniel/magic",
+    "description": "Magic methods",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Marcano",
+            "email": "dmarcanor2@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "IteratorCounter\\": "src/"
+        }
+    }
+}
