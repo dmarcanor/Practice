@@ -21,8 +21,9 @@ class Product{
 	}
 	
 	public function isEmpty($array){
-		if(count($array) > 0) return false;
-		else return true;
+		if(empty($array)) return true;
+		
+		return true;
 	}
 
 	public function __get($index){
@@ -33,7 +34,4 @@ class Product{
 		$this->list = NULL;
 	}
 
-	public function isSmartphone($obj){
-		return gettype($obj) == "smartphone" ? true : false;
-	}
 }
