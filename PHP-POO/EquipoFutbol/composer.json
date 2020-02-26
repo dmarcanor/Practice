@@ -1,7 +1,10 @@
 {
-    "name": "daniel/football_club",
-    "description": "Applying composer autoload to a football club project",
+    "name": "daniel/equipo-futbol",
+    "description": "Composer para ejemplo de equipo de futbol",
     "type": "project",
+    "require": {
+        "nesbot/carbon": "1.21"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -9,8 +12,7 @@
             "email": "dmarcanor2@gmail.com"
         }
     ],
-    "require": {},
-    "autolad": {
+    "autoload": {
         "psr-4": {
             "Practica\\": "src/"
         }
