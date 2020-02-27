@@ -63,11 +63,6 @@ class Jugador extends Personaje{
 		else return false;
 	}
 
-	public function verificarEstadistica($estadistica){
-		if($estadistica > 100) $estadistica = MAX_ESTADISTICAS;
-		return $estadistica;
-	}
-
 	public function pasar($receptor){
 		LOG::info("{$this->getNombre()} {$this->getApellido()} pasa el balon a {$receptor->getNombre()}");
 	}

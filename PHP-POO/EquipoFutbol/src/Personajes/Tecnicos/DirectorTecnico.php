@@ -26,10 +26,5 @@ class DirectorTecnico extends Personaje{
 		return $this;
 	}
 	//Fin de getters y setter
-	public function verificarEstadistica($estadistica){
-		if($estadistica > 100) $estadistica = MAX_ESTADISTICAS;
-		return $estadistica;
-	}
-
 
 }
