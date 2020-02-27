@@ -4,6 +4,8 @@
 	use  Practica\Personajes\Tecnicos\DirectorTecnico;
 	use Practica\Log\Log;
 	use Practica\Log\HtmlLogger;
+	use Practica\ControladorJuego\ControladorJuego;
+
 	require "../vendor/autoload.php";
 	
 	Log::setLogger(new HtmlLogger());
@@ -41,7 +43,7 @@
 	$equipoA = new EquipoFutbol("Equipo A", "Equipo A Arena", "Ligue 1", $jugadoresA, $directorTecnicoA);
 
 	//Creando un equipo B
-	$directorTecnicoB = new DirectorTecnico("Pep", "Guardiola", "12/11/1980", "España" ,1.72, 70);
+	$directorTecnicoB = new DirectorTecnico("Jurgen", "Klopp", "18/04/1976", "Alemania" ,1.77, 82);
 
 	$jugadoresB = array(
 		Jugador::createJugador("Gianluigi", "Buffon", "12/04/1987", "Italia", 1.92, 84)
@@ -71,30 +73,7 @@
 		);
 	$equipoB = new EquipoFutbol("Equipo B", "Equipo B Arena", "Ligue 1", $jugadoresB, $directorTecnicoB);
 
-	$goles_A=0;
-	$goles_B=0;
-	while($goles_A <= 5 && $goles_B <= 5){
-		if(avanzar($equipoA, $equipoB)){
-			$goles_A++;
-		}else{
-			if(avanzar($equipoB, $equipoA)){
-				$goles_B++;
-			}
-		}
-	}
-?>
+	$controlador = new ControladorJuego();
+	$controlador->jugar($equipoA, $equipoB);
 
-<?php
-	function avanzar($atacante, $oponente){
-		$jugador_atacante = $atacante->getJugadores()[rand(1,3)];
-		$jugador_oponente = $oponente->getJugadores()[rand(1,3)];
-		$arquero_atacante = $atacante->getJugadores()[0];
-		$arquero_oponente = $oponente->getJugadores()[0];
-
-		if($jugador_atacante->regatear($jugador_oponente)){
-			if($jugador_atacante->patear($arquero_oponente)) return true;
-		}else{
-			return false;
-		}
-	}
 ?>
