@@ -14,16 +14,10 @@ class EquipoFutbol{
 		$this->jugadores = array();
 		$this->competiciones = array();
 		$this->directorTecnico = NULL;
-
-		if(isset($competiciones)){
-			$this->competiciones = $competiciones;
-		}
-		if(isset($jugadores)){
-			$this->jugadores = $jugadores;
-		}
-		if(isset($directorTecnico)){
-			$this->directorTecnico = $directorTecnico;
-		}
+		
+		$this->competiciones = $competiciones;
+		$this->jugadores = $jugadores;
+		$this->directorTecnico = $directorTecnico;
 	}
 
 	public function getNombre(){
@@ -57,18 +51,8 @@ class EquipoFutbol{
 		return $this->jugadores;
 	}
 
-	public function setJugador(Jugador $jugadores=NULL, $listJugadores=0){
-		if($jugadores){
-			$this->jugadores[] = $jugadores;
-		}else{
-			if(! $this->isJugadoresEmpty()){
-				foreach($listJugadores as $row){
-					$this->jugadores[] = $listJugadores;
-				}
-			}else{
-				$this->jugadores = $listJugadores;
-			}
-		}
+	public function setJugador(Jugador $jugador){
+		$this->jugadores[] = $jugador;
 		
 		return $this;
 	}
@@ -85,6 +69,21 @@ class EquipoFutbol{
 
 	public function isJugadoresEmpty(){
 		if(count($this->jugadores) > 0) return false;
-		else return true;
+		
+		return true;
+	}
+
+	public function atacar(EquipoFutbol $oponente){
+		$atacante = $this->getJugadores()[rand(1,4)];
+		$defensor = $oponente->getJugadores()[rand(1,4)];
+		$arquero = $oponente->getJugadores()[0];
+
+		if($atacante->regatear($defensor)){
+			if($atacante->patear($arquero)){
+				return true;		
+			}
+		}else{
+			return false;
+		}
 	}
 }
